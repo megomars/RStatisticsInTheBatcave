@@ -35,3 +35,4 @@
 28. airmiles - loads the values in the console
 29. ?str - shows you the metadata
 30. anscombe - common data set for stats
+31. 
