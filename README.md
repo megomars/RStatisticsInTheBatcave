@@ -14,7 +14,8 @@
 10. **declare variables - x <- 1:5 (assignment operator [opt -])(the variable is a vector)(x gets 1 to 5)**
 11. R is case sensitive
 12. **y <- c(4,5,6) (combine or concatenate)**
-13. ```
+13.
+    ```
     # suppose
     x <- c(3,4,5)
     y <- c(4,3,1)
