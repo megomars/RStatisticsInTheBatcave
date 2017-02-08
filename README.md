@@ -35,4 +35,7 @@
 28. airmiles - loads the values in the console
 29. ?str - shows you the metadata
 30. anscombe - common data set for stats
-31. 
+
+31. create sequential data - x <- 1:10
+32. seq(30,0 by = -3)
+33. scan()
