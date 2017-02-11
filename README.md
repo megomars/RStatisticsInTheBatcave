@@ -38,10 +38,21 @@
 
 31. create sequential data - x <- 1:10 (x gets one to ten)
 32. seq(30,0 by = -3)
-33. scan()
+33. **scan()**
 34. ls() - list all objects in viewer
 
 35. read data from a text file - trends.txt <- read.table("/Volumes/2017MSC/R\ Statistics\ Essential\ Training//Rdata/GoogleTrends.txt", header = TRUE)
 36. trends.txt <- read.table("/Volumes/2017MSC/R\ Statistics\ Essential\ Training//Rdata/GoogleTrends.txt", header = TRUE, sep= "\t") - set the separator to tabs
 37. View(trends.txt) - views a text file
-38. read data from a csv file - trends.csv <- read.csv("/Volumes/2017MSC/R\ Statistics\ Essential\ Training//Rdata/GoogleTrends.csv", header = TRUE)
+38. **read data from a csv file** - trends.csv <- read.csv("/Volumes/2017MSC/R\ Statistics\ Essential\ Training//Rdata/GoogleTrends.csv", header = TRUE)
+39. **plot(UCBAdmission)**
+40. To see marginal frequencies use margin.table(UCBAdmission, 1)
+41. obj.property <- margin.table(UCBAdmission, 1) - stores this value into a table
+42. **barplot(obj.property)**
+43. **prop.table(obj.property)** - shows proportions or percentages
+44. round(prop.table(obj.property),2)
+45. convert to data frame - admit <- as.data.frame.table(UCBAdmission)
+46. Convert tables as data frames - 
+    admit.rows <- as.data.frame(lapply(as.data.frame.table(UCBAdmissions), function(x)rep(x, as.data.frame.table(UCBAdmissions)$Freq)))[, -4]
+47. data1 <- data2[,-4] - remove the fourth column
+48. obj.property[1:10, ] - show me the first 10 rows with all columns
