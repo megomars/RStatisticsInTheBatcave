@@ -36,6 +36,12 @@
 29. ?str - shows you the metadata
 30. anscombe - common data set for stats
 
-31. create sequential data - x <- 1:10
+31. create sequential data - x <- 1:10 (x gets one to ten)
 32. seq(30,0 by = -3)
 33. scan()
+34. ls() - list all objects in viewer
+
+35. read data from a text file - trends.txt <- read.table("/Volumes/2017MSC/R\ Statistics\ Essential\ Training//Rdata/GoogleTrends.txt", header = TRUE)
+36. trends.txt <- read.table("/Volumes/2017MSC/R\ Statistics\ Essential\ Training//Rdata/GoogleTrends.txt", header = TRUE, sep= "\t") - set the separator to tabs
+37. View(trends.txt) - views a text file
+38. read data from a csv file - trends.csv <- read.csv("/Volumes/2017MSC/R\ Statistics\ Essential\ Training//Rdata/GoogleTrends.csv", header = TRUE)
