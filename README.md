@@ -70,3 +70,5 @@
 57. install.packages("RColorBrewer")
 58. display.brewer.pal(20,"YlOrRd")
 59. **barplot(mylovelydata, col = brewer.pal(4,"YlOrRd"))**
+
+60. 
