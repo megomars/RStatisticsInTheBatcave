@@ -31,7 +31,7 @@
 * airmiles - loads the values in the console
 * **Getting to know your data**
 	* **str(airmiles)** - shows you the structure of your data
-	* **dim(airmiles)** - dimensions of your data
+	* **dim(airmiles)** - dimensions of your data, rows, columns
 	* **summary(airmiles)** - summary of your data
 	* **length(airmiles)** - number of columns in your dataframe
 	* **head(airmiles, n=10)** - first 10 values
@@ -71,34 +71,59 @@
 	* View(trends.txt) - views a text file
 	* trends.csv <- read.csv("GoogleTrends.csv", header = TRUE) - read data from a csv file
 
-#### Vector commands
+#### Vector commands - (one dimensional array): The elements in a vector all have the same data type.
 * vec <- c(1,2,3) - new vector with three values
 * vec[1] - first value
+* vec[c(1,3)] same as vec[1:3] - both select the first to third values in a vector.
+* vec["NameOfElement"] - selects column with name "NameOfElement"
+* conditional_select <- vec[1:5]>0 - store those values where the first five values are >0
+* selection_vector <- poker_vector > 0 store those values where the entire vectors are >0
 * names(vec) <- c("A","B","C") - give names to the values
 * unname(vec) - return no names
 * sum(vec) - add up all values in vector
 * vec1 >= vec2 - returns TRUE or FALSE
 * vec[c(2:4)] - select the second, third and fourth values in a vector
 
-#### Factor commands
+#### Factor commands - statistical data type used to store categorical variables
 * factor(temp, order=TRUE, levels=c("L","M","H"))
 * levels(temp)
 * summary(temp)
 
-#### Matrix commands - values must be the same data type
-* matrix(1:9, byrow=TRUE, nrow=3)
-* colnames()
-* rownames()
-* rowSums()
-* colSums()
-* cbind()
-* rbind()
+#### Matrix commands - (two dimensional array): The elements in a matrix all have the same data type.
+* matrix(1:9, byrow=TRUE, nrow=3) - create a square matrix
+* colnames(star_wars_matrix) - add names for columns
+* rownames(star_wars_matrix) - add names for rows
+* rowSums() - calculate totals for each row of a matrix
+* colSums() - calculate totals for each column of a matrix
+* cbind(matrix1,matrix2) - merges column values
+* rbind(matrix1,matrix2) - merges row values
+* my_matrix[,1] - select all the rows but only first column
+* my_matrix[1,] - select all columns of first row
 
-#### Dataframe commands
-* 
+#### Dataframe commands - (two-dimensional objects) - Variables as columns and observations as rows. Different columns can be of different data type.
+* df <- data.frame(a,b,c,d) - where a, b, c, d are vectors
+* df[1,3] - first row, third column
+* my_df[1:3,2:4] - selects rows 1, 2, 3 and columns 2, 3, 4
+* my_df[,"NameOfColumn"] OR my_df$NameOfColumn- selects values of "NameOfColumn" column
+* planets_df[1:5,c("name","diameter")] - select first five values of both these columns
+* subset(my_df, subset = some_condition)
+* df_sub <- subset(planets_df, type=="Gas giant")
+* subset(planets_df, diameter<1)
+* order() - A function that gives you the ranked position of each element
+* E.g. funny <- c(5,9,2,3) ... order(funny) ... 3 4 1 2
+* funny[order(funny)] ... 2 3 5 9 - orders the values
+* order(dataset, na.last = TRUE, decreasing = FALSE, method = c("auto", "shell", "radix"))
 
-#### List commands
-* 
+
+
+#### List commands - (Super data type) A list in R allows you to gather a variety of objects under one name (that is, the name of the list) in an ordered way. These objects can be matrices, vectors, data frames, even other lists, etc. It is not even required that these objects are related to each other in any way.
+
+* my_list <- list(my_vector,my_matrix,my_df) - these three components can be vectors, matrices or data frames.
+* my_list <- list(name1 = your_comp1, name2 = your_comp2) - you can give each list a name
+* names(my_list) <- c("name1", "name2") - add names to existing list
+* shining_list[[1]] .... shining_list[["reviews"]] .... shining_list$reviews
+* shining_list[[2]][1] select the first observation of the second variable
+* newlist <- c(oldlist,year=1980) - add new variable with observation = 1980 to the list
 
 #### Conditionals
 * **if statement**
