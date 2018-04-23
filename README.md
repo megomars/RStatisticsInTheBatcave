@@ -4,27 +4,29 @@
 
 > Updated to include only the useful commands - 1 year into using the language.
 
-##### Theory
+### Theory
 * R is a programming language based on S, R is the name of the language, R-Studio is the IDE
 * R has features for - data access, data cleaning, analysis and data reporting.
 * **Comments are written with a # (shift-command-c for multiple lines)**
 * **Run commands with - Command-Enter**
 
-##### Basics
+### Basic commands
 * print("hello world")
 * **x <- 1:5 (assignment operator [opt -])(the variable is a vector)(x gets 1 to 5)**
 * **y <- c(4,5,6) (combine or concatenate)**
 * seq(30,0 by = -3)
+* rep(1:2, times=3) - 121212
+* rep(1:2, each=3) - 111222
 * x <- c(3,4,5) & y <- c(4,3,1)n - x+y is the sum of the vectors
 * rm(x), rm(x,y), rm(list = ls()) - clears your workspace/memory
 
-##### Working with packages
+### Working with packages
 * Packages by [domain](https://cran.r-project.org/web/views/) and [alphabetical](https://cran.r-project.org/web/packages/available_packages_by_name.html)
 * install.packages("ggplot2")
 * library("ggplot2") OR require("ggplot2")- activate the package
 * ?ggplot2 - documentation for each package (also includes vignettes)
 
-##### Working with data
+### Working with data
 * ?datasets - show the built in **data(airmiles) - load that data**
 * airmiles - loads the values in the console
 * **Getting to know your data**
@@ -40,9 +42,9 @@
 	* **hist(airmiles, breaks=10)** - simple histogram with 10 buckets
 	* **mean(airmiles)** - simple average
 	* **median(airmiles)** - simple median
-	* round(dataset,2)
-	* **typeof(airmiles)** - type of data
-	* **class(airmiles)** - class of data
+	* **round(dataset,2)** - round to two decimal points
+	* **typeof(airmiles)** - type of data (double, character, logical)
+	* **class(airmiles)** - class of data (numeric, character, logical)
 	* **table(airmiles)** - display data in a table
 	* **margin.table(UCBAdmission, 1)** - view marginal frequencies
 	* **obj.property <- margin.table(UCBAdmission, 1)** stpres value in table
@@ -69,8 +71,60 @@
 	* View(trends.txt) - views a text file
 	* trends.csv <- read.csv("GoogleTrends.csv", header = TRUE) - read data from a csv file
 
+#### Vector commands
+* vec <- c(1,2,3) - new vector with three values
+* vec[1] - first value
+* names(vec) <- c("A","B","C") - give names to the values
+* unname(vec) - return no names
+* sum(vec) - add up all values in vector
+* vec1 >= vec2 - returns TRUE or FALSE
+* vec[c(2:4)] - select the second, third and fourth values in a vector
 
-##### working with charts
+#### Factor commands
+* factor(temp, order=TRUE, levels=c("L","M","H"))
+* levels(temp)
+* summary(temp)
+
+#### Matrix commands - values must be the same data type
+* matrix(1:9, byrow=TRUE, nrow=3)
+* colnames()
+* rownames()
+* rowSums()
+* colSums()
+* cbind()
+* rbind()
+
+#### Dataframe commands
+* 
+
+#### List commands
+* 
+
+#### Conditionals
+* **if statement**
+	if(i<5){
+		#some code
+	}else{
+		#some other code
+	}
+#### Loops
+* **For loop**
+	* for (var i in 1:4){
+		#some code
+	}
+* **While loop**
+	* while (i<5){
+		#some code
+		i<-i+1
+	}
+
+#### Functions
+func <- function(var){
+	#do something
+	return(p)
+}
+
+#### working with charts
 * install.packages("RColorBrewer")
 **barplot(obj.property)**
 * colors() - complete list of 657 colors
