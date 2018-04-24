@@ -88,6 +88,7 @@
 * factor(temp, order=TRUE, levels=c("L","M","H"))
 * levels(temp)
 * summary(temp)
+* mtcars$fcyl <- as.factor(mtcars$cyl) - convert a dataset as a factor
 
 #### Matrix commands - (two dimensional array): The elements in a matrix all have the same data type.
 * matrix(1:9, byrow=TRUE, nrow=3) - create a square matrix
