@@ -12,9 +12,10 @@
 
 ### Basic commands
 * print("hello world")
-* **x <- 1:5 (assignment operator [opt -])(the variable is a vector)(x gets 1 to 5)**
+* **x <- 1:5 (assignment operator [opt/alt -])(the variable is a vector)(x gets 1 to 5)**
 * **y <- c(4,5,6) (combine or concatenate)**
-* seq(30,0 by = -3)
+* seq(30,0, by = -3) - 30,29,28...2,1,0
+* seq(10,0, length.out=5) - 10.0  7.5  5.0  2.5  0.0
 * rep(1:2, times=3) - 121212
 * rep(1:2, each=3) - 111222
 * x <- c(3,4,5) & y <- c(4,3,1)n - x+y is the sum of the vectors
@@ -27,7 +28,7 @@
 * ?ggplot2 - documentation for each package (also includes vignettes)
 
 ### Working with data
-* ?datasets - show the built in **data(airmiles) - load that data**
+* ?datasets - show the built-in **data(airmiles) - load that data**
 * airmiles - loads the values in the console
 * **Getting to know your data**
 	* **str(airmiles)** - shows you the structure of your data
@@ -116,7 +117,6 @@
 * order(dataset, na.last = TRUE, decreasing = FALSE, method = c("auto", "shell", "radix"))
 
 
-
 #### List commands - (Super data type) A list in R allows you to gather a variety of objects under one name (that is, the name of the list) in an ordered way. These objects can be matrices, vectors, data frames, even other lists, etc. It is not even required that these objects are related to each other in any way.
 
 * my_list <- list(my_vector,my_matrix,my_df) - these three components can be vectors, matrices or data frames.
@@ -133,6 +133,7 @@
 	}else{
 		#some other code
 	}
+	
 #### Loops
 * **For loop**
 	* for (var i in 1:4){
