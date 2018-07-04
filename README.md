@@ -63,27 +63,32 @@
 	* **is.data.frame(airmiles)** - test if data frame
 	* **as.data.frame(airmiles)** - convert to dataframe
 	* **paste("First","Last")** - concatenates two or more terms
-	* **sprintf("%s hello %d")** - concatenates two or more terms
+	* **paste0("a","b","c") - concatenates without spaces
+	* **sprintf("%s hello %d", "Sam", 100)** - concatenates two or more terms with a C syntax (%s string, %d decimal)
 	* **sub("old","new", "This is very old")** - substitute "old" for "new"
-	* **substr("Text goes here", 4, 8)** - Text, start, stop
+	* **substr("Text goes here", start=4, stop=6)** - Text, start, stop
 
 * **Importing data**
 	* trends.txt <- read.table("GoogleTrends.txt", header = TRUE, sep= "\t") - Read data from a text file and set the separator to tabs
 	* View(trends.txt) - views a text file
 	* trends.csv <- read.csv("GoogleTrends.csv", header = TRUE) - read data from a csv file
 
-#### Vector commands - (one dimensional array): The elements in a vector all have the same data type.
+#### Vector commands - (one dimensional array): The elements in a vector all have the same data type. A vector is a sequence of data elements of the same basic type. Members in a vector are officially called components.
+
 * vec <- c(1,2,3) - new vector with three values
 * vec[1] - first value
 * vec[c(1,3)] same as vec[1:3] - both select the first to third values in a vector.
+* a <- c(1,2,3)      b <- c(4,5,6)     a+b    a-b    a*b    a/b     - 5 7 9
 * vec["NameOfElement"] - selects column with name "NameOfElement"
-* conditional_select <- vec[1:5]>0 - store those values where the first five values are >0
-* selection_vector <- poker_vector > 0 store those values where the entire vectors are >0
+* conditional_select <- vec[1:5]>0 - store those values as booleans where the first five values are >0
+* selection_vector <- poker_vector > 0 store those values as booleans where the entire vectors are >0
 * names(vec) <- c("A","B","C") - give names to the values
 * unname(vec) - return no names
 * sum(vec) - add up all values in vector
 * vec1 >= vec2 - returns TRUE or FALSE
-* vec[c(2:4)] - select the second, third and fourth values in a vector
+* selection_vector <- poker_vector > 0
+* poker_winning_days <- poker_vector[selection_vector]
+
 
 #### Factor commands - statistical data type used to store categorical variables
 * factor(temp, order=TRUE, levels=c("L","M","H"))
@@ -91,16 +96,24 @@
 * summary(temp)
 * mtcars$fcyl <- as.factor(mtcars$cyl) - convert a dataset as a factor
 
-#### Matrix commands - (two dimensional array): The elements in a matrix all have the same data type.
-* matrix(1:9, byrow=TRUE, nrow=3) - create a square matrix
-* colnames(star_wars_matrix) - add names for columns
-* rownames(star_wars_matrix) - add names for rows
-* rowSums() - calculate totals for each row of a matrix
-* colSums() - calculate totals for each column of a matrix
-* cbind(matrix1,matrix2) - merges column values
-* rbind(matrix1,matrix2) - merges row values
+#### Matrix commands - (two dimensional array): The elements in a matrix all have the same data type. A matrix is a collection of data elements arranged in a two-dimensional rectangular layout.
+ A = matrix( 
+   c(2, 4, 3, 1, 5, 7), # the data elements 
+   nrow=2,              # number of rows 
+   ncol=3,              # number of columns 
+   byrow = TRUE)        # fill matrix by rows 
+* matrix(1:9, nrow=3, byrow=TRUE) - create a square matrix
+* colnames(A) <- c("c1","c2","c3") - add names for columns
+* rownames(A) <- c("r1","r2","r3") - add names for rows
+* rowSums(A) - calculate totals for each row of a matrix
+* colSums(A) - calculate totals for each column of a matrix
+* dimnames = list(c("A New Hope", "The Empire Strikes Back", "Return of the Jedi"), c("US", "non-US"))
+* cbind(matrix1,matrix2) - add a new entry with values 
+* rbind(matrix1,matrix2) - add a new variable with values
 * my_matrix[,1] - select all the rows but only first column
 * my_matrix[1,] - select all columns of first row
+* t(B)          - transpose of B 
+* c(B) - deconstruct a matrix which combines all column vectors into one.
 
 #### Dataframe commands - (two-dimensional objects) - Variables as columns and observations as rows. Different columns can be of different data type.
 * df <- data.frame(a,b,c,d) - where a, b, c, d are vectors
@@ -133,7 +146,7 @@
 	}else{
 		#some other code
 	}
-	
+
 #### Loops
 * **For loop**
 	* for (var i in 1:4){
