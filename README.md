@@ -90,9 +90,10 @@
 * poker_winning_days <- poker_vector[selection_vector]
 
 
-#### Factor commands - statistical data type used to store categorical variables
-* factor(temp, order=TRUE, levels=c("L","M","H"))
-* levels(temp)
+#### Factor commands - statistical data type used to store categorical/nominal variables
+* factor_create <-factor(gender_vector)
+* factor(temp, order=TRUE, levels=c("L","M","H")) #ordinal data
+* levels(factor_survey_vector) <- c("Female","Male") # overrides the default levels and values
 * summary(temp)
 * mtcars$fcyl <- as.factor(mtcars$cyl) - convert a dataset as a factor
 
