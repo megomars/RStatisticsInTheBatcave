@@ -140,24 +140,74 @@
 * shining_list[[2]][1] select the first observation of the second variable
 * newlist <- c(oldlist,year=1980) - add new variable with observation = 1980 to the list
 
+##INTERMEDIATE R
+
 #### Conditionals
+* **Logical operators
+	* TRUE == TRUE
+	* TRUE != FALSE
+	* 3<5 - TRUE   5>2 - TRUE
+	
+```R
+linkedin <- c(16, 9, 13, 5, 2, 17, 14)
+facebook <- c(17, 7, 5, 16, 8, 13, 14)
+linkedin>facebook - FALSE  TRUE  TRUE FALSE FALSE  TRUE FALSE
+```
+* AND &, OR |, NOT !
+
 * **if statement**
-	if(i<5){
-		#some code
-	}else{
-		#some other code
-	}
+```R
+if(i>80){
+	print("excellent")
+}else if (i < 80 & i > 50){
+	print("passed")
+} else{
+	print("failed")
+}
+```
 
 #### Loops
 * **For loop**
+```R
 	* for (var i in 1:4){
 		#some code
 	}
+```
+```R
+#NO LOOPING INDEX
+cities <- c("Doha", "Al Khor", "Al Wakra")
+cities2 <- list("Doha", "Al Khor", "Al Wakra") - same result
+	* for (city in cities){
+		print (city)
+	}
+	# [1] Doha
+	# [1] Al Khor
+	# [1] Al Wakra
+```
+
+```R
+	* for (city in cities){
+		if (nchar(city) == 6{
+		break  -  next
+		}
+		print(city)
+	}
+```
+```R
+#CONTAINS LOOPING INDEX
+cities <- c("Doha", "Al Khor", "Al Wakra")
+	* for (i in 1:length(cities)){
+		print (cities[i])
+	}
+```
+
 * **While loop**
+```R
 	* while (i<5){
 		#some code
 		i<-i+1
 	}
+```
 
 #### Functions
 func <- function(var){
