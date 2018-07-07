@@ -189,14 +189,22 @@ cities2 <- list("Doha", "Al Khor", "Al Wakra") - same result
 	# [1] Al Khor
 	# [1] Al Wakra
 ```
-
 ```R
 	* for (city in cities){
 		if (nchar(city) == 6{
-		break  -  next
+		break  OR  next - stop or skip over it
 		}
 		print(city)
 	}
+```
+
+```R
+lapply(cities,class) - retrieves the classes for each of the cities *Apply a Function over a List or Vector*
+unlist(lapply(cities,nchar)) - returns just the values
+lapply(oil_prices, triple) - list or data-frame and function to apply to it
+lapply(oil_prices, multiply, secondarg=3)
+sapply(cities,class) - returns a simplified version of lapply
+sapply(cities,nchar) - returns the length of each city - Durban  6  Cape Town  9   Johannesburg   12
 ```
 ```R
 #CONTAINS LOOPING INDEX
