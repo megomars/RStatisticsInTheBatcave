@@ -10,6 +10,7 @@
 * **Comments are written with a # (shift-command-c for multiple lines)**
 * **Run commands with - Command-Enter**
 
+
 ### Basic commands
 * print("hello world")
 * **x <- 1:5 (assignment operator [opt/alt -])(the variable is a vector)(x gets 1 to 5)**
@@ -20,11 +21,15 @@
 * rep(1:2, each=3) - 111222
 * x <- c(3,4,5) & y <- c(4,3,1)n - x+y is the sum of the vectors
 * rm(x), rm(x,y), rm(list = ls()) - clears your workspace/memory
+* ls() - view your workspace
+
 
 ### Working with packages
 * Packages by [domain](https://cran.r-project.org/web/views/) and [alphabetical](https://cran.r-project.org/web/packages/available_packages_by_name.html)
 * install.packages("ggplot2")
+* search() - view all the installed functions
 * library("ggplot2") OR require("ggplot2")- activate the package
+* result <- require("data.table") - returns FALSE if package does not exist, good for attaching packages dynamically
 * ?ggplot2 - documentation for each package (also includes vignettes)
 
 ### Working with data
@@ -218,10 +223,30 @@ for (i in 1:nrow(ttt)) {
 ```
 
 #### Functions
-func <- function(var){
+
+* args(sd) - arguments of a function
+* na.rm = TRUE - remove all NA values
+##### Writing functions
+```R
+func <- function(x){
 	#do something
-	return(p)
+	return(x*3) - you can either explicitly return a value otherwise the last statement is returned
 }
+```
+Create default argument value
+```R
+func <- function(x,y=1){
+	x*y
+}
+```
+Dice throwing function
+```R
+throw_die <- function() {
+  number <- sample(1:6, size = 1)
+  number
+}
+throw_die()
+```
 
 #### working with charts
 * install.packages("RColorBrewer")
