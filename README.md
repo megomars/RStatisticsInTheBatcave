@@ -140,7 +140,7 @@
 * shining_list[[2]][1] select the first observation of the second variable
 * newlist <- c(oldlist,year=1980) - add new variable with observation = 1980 to the list
 
-##INTERMEDIATE R
+## INTERMEDIATE R
 
 #### Conditionals
 * **Logical operators
@@ -199,6 +199,14 @@ cities <- c("Doha", "Al Khor", "Al Wakra")
 	* for (i in 1:length(cities)){
 		print (cities[i])
 	}
+```
+
+```R
+for (i in 1:nrow(ttt)) {
+  for (j in 1:ncol(ttt)) {
+    print(paste("On row ",i,"and column ",j,"the board contains ", ttt[i,j]))
+  }
+}
 ```
 
 * **While loop**
