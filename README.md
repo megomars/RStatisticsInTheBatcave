@@ -122,7 +122,7 @@ summary(temp)
 mtcars$fcyl <- as.factor(mtcars$cyl) # convert a dataset as a factor
 ```
 
-#### Matrix commands 
+### Matrix commands 
 A matrix is a two dimensional array. The elements in a matrix all have the same data type. A matrix is a collection of data elements arranged in a two-dimensional rectangular layout.
 ```R
  A = matrix( 
@@ -144,7 +144,7 @@ t(B)          # transpose of B
 c(B) # deconstruct a matrix which combines all column vectors into one.
 ```
 
-#### Dataframe commands
+### Dataframe commands
 Dataframes are two-dimensional objects. Variables as columns and observations as rows. Different columns can be of different data type.
 ```R
 df <- data.frame(a,b,c,d) # where a, b, c, d are vectors
@@ -163,7 +163,7 @@ order(dataset, na.last = TRUE, decreasing = FALSE, method = c("auto", "shell", "
 ```
 
 
-#### List commands
+### List commands
 A list in R allows you to gather a variety of objects under one name (that is, the name of the list) in an ordered way. These objects can be matrices, vectors, data frames, even other lists, etc. It is not even required that these objects are related to each other in any way.
 ```R
 my_list <- list(my_vector,my_matrix,my_df) # these three components can be vectors, matrices or data frames.
@@ -204,7 +204,7 @@ if(i>80){
 
 ### Loops
 
-####For loop**
+#### For loop
 ```R
 	* for (var i in 1:4){
 		#some code
@@ -288,24 +288,26 @@ sapply(cities,nchar) # returns the length of each city - Durban  6  Cape Town  9
 ```
 
 ### Working with charts
-* install.packages("RColorBrewer")
-**barplot(obj.property)**
-* colors() - complete list of 657 colors
-* barplot(mylovelydata, col = "tan1") - based on name
-* barplot(mylovelydata, col = colors()[44]) - based on the vector position
-* barplot(mylovelydata, col = rgb(203, 201,34, max=255)) - standard RGB
-* **barplot(mylovelydata, col = "#FB9D04") - standard hex notation**
-* barplot(mylovelydata, col = c("#fb9d04","#ffffff"))
-* ?palette - barplot(mylovelydata, col = heat.colors(6)) - barplot(mylovelydata, col = terrain.colors(6))
-* 
-* display.brewer.pal(20,"YlOrRd")
-* **barplot(mylovelydata, col = brewer.pal(4,"YlOrRd"))**
-* plot(chickwts$feed) //the dataset and the column of data
-* feeds <- table(chickwts$feeds)
-barplot(feeds[order(feeds,decreasing=TRUE)]) // can order one variable by another, increasing is the default
-* par(oma = c(1, 1, 1, 1)) // change the parameter of the outline margin: bottom, left, top , right
-* par(mar = c(4, 4, 5, 3)) // change the parameter of the margin
-* // combine everything barplot(feeds[order(feeds)],horiz = TRUE, las = 1, col=("#fb9d04"), border = NA, main = "This is the main label\nthat will go in two lines", xlab = "Number of chicks")
-* ?par
+```R
+install.packages("RColorBrewer")
+barplot(obj.property)
+colors() # complete list of 657 colors
+barplot(mylovelydata, col = "tan1") # based on name
+barplot(mylovelydata, col = colors()[44]) # based on the vector position
+barplot(mylovelydata, col = rgb(203, 201,34, max=255)) # standard RGB
+**barplot(mylovelydata, col = "#FB9D04") # standard hex notation**
+barplot(mylovelydata, col = c("#fb9d04","#ffffff"))
+?palette # barplot(mylovelydata, col = heat.colors(6)) # barplot(mylovelydata, col = terrain.colors(6))
+
+display.brewer.pal(20,"YlOrRd")
+barplot(mylovelydata, col = brewer.pal(4,"YlOrRd"))
+plot(chickwts$feed) # the dataset and the column of data
+feeds <- table(chickwts$feeds)
+barplot(feeds[order(feeds,decreasing=TRUE)]) # can order one variable by another, increasing is the default
+par(oma = c(1, 1, 1, 1)) # change the parameter of the outline margin: bottom, left, top , right
+par(mar = c(4, 4, 5, 3)) # change the parameter of the margin
+# combine everything barplot(feeds[order(feeds)],horiz = TRUE, las = 1, col=("#fb9d04"), border = NA, main = "This is the main label\nthat will go in two lines", xlab = "Number of chicks")
+?par
 pie(feeds)
-* pie(feeds[order(feeds, decreasing = TRUE)], init.angle = 90, clockwise = TRUE, col=c("#fb9d04", "#fb0000", "#990000"), main="Headline")
+pie(feeds[order(feeds, decreasing = TRUE)], init.angle = 90, clockwise = TRUE, col=c("#fb9d04", "#fb0000", "#990000"), main="Headline")
+```
