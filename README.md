@@ -2,7 +2,7 @@
 
 ## A review of R, the statistics programming language.
 
-> Updated to include only the useful commands - 1.5 years into using the language.
+Updated to include only the useful commands - 1.5 years into using the language.
 
 ## Theory
 * R is a programming language based on S, R is the name of the language, R-Studio is the IDE
@@ -14,7 +14,7 @@
 ## Basic commands
 ```R
 print("hello world")
-x <- 1:5 #assignment operator [opt/alt -])(the variable is a vector)(x gets 1 to 5
+x <- 1:5 #assignment operator [opt/alt -])(the variable is a vector)(x gets 1 to 5)
 y <- c(4,5,6) # combine or concatenate
 seq(30,0, by = -3) # 30,29,28...2,1,0
 seq(10,0, length.out=5) # 10.0  7.5  5.0  2.5  0.0
@@ -82,6 +82,8 @@ airmiles # loads the values in the console
 	sprintf("%s hello %d", "Sam", 100) # concatenates two or more terms with a C syntax (%s string, %d decimal)
 	sub("old","new", "This is very old") # substitute "old" for "new"
 	substr("Text goes here", start=4, stop=6) # Text, start, stop
+	strsplit(pioneers, split = ":") # splits text on the specified character
+	indentical(a,b) # returns TRUE or FALSE if the same
 ```
 
 ### Importing data
@@ -278,14 +280,67 @@ throw_die()
 ```
 
 ### Apply family
+The lapply function iterates over lists or vectors and returns a list.
+If we wanted to find class type for each city in a vector. We could write the following:
 ```R
-lapply(cities,class) # retrieves the classes for each of the cities *Apply a Function over a List or Vector*
+for (city in cities){
+		print class(city)
+	}
+```
+But a better way would be to use the lapply function:
+```R
+lapply(cities,class) #input, function
 unlist(lapply(cities,nchar)) # returns just the values
-lapply(oil_prices, triple) # list or dataframe and function to apply to it
+```
+Here are some other apply functions:
+```R
+lapply(oil_prices, triple) # list or data-frame and function to apply to it
 lapply(oil_prices, multiply, secondarg=3)
 sapply(cities,class) # returns a simplified version of lapply
 sapply(cities,nchar) # returns the length of each city - Durban  6  Cape Town  9   Johannesburg   12
+split_low <- lapply(split_math,tolower) # convert an entire vector to lower case.
+sapply(cities,nchar, USE.NAMES=FALSE) 
+vapply(temp,class,numeric(1)) # Must explicitly mention what the output type is
+
+# Named function
+triple <- function(x) { 3 * x }
+# Anonymous function with same implementation
+function(x) { 3 * x }
+# Use anonymous function inside lapply()
+lapply(list(1,2,3), function(x) { 3 * x })
 ```
+
+### Utilities
+
+Functions for data structures:
+```R
+sort(c(4,5,6,3,2,1)) # gives us 1,2,3,4,5,6 - sort(x, decreasing = FALSE)
+append() # adds to a list
+rev() # reverses a list
+```
+
+Reegular expressions
+```R
+?regex
+grep() #grep(pattern = <regex>, x=<string>) 
+	# returns an index list
+grepl() # grepl(pattern = <regex>, x=<string>) 
+	animals <- c("cat","mouse","ant")
+	grepl(pattern="a",x=animals)
+	# Returns a boolean list
+	# TRUE FALSE TRUE
+	# carrot a: ^a   starts with an "a"
+	# a dollar: a$   ends with an "a"
+
+sub() # sub(pattern= <regex>, replacement = <str>, x=<str>)
+	animals <- c("cat","mouse","ant")
+	sub(pattern="a|e", replacement="o", x=animals)
+	# Returns a list with replaced values in first occurence only
+	# "cot","mouso","ont"
+gsub() # replaces every single occurence
+```
+
+
 
 ### Working with charts
 ```R
