@@ -312,14 +312,14 @@ lapply(list(1,2,3), function(x) { 3 * x })
 
 ### Utilities
 
-Functions for data structures:
+#### Functions for data structures:
 ```R
 sort(c(4,5,6,3,2,1)) # gives us 1,2,3,4,5,6 - sort(x, decreasing = FALSE)
 append() # adds to a list
 rev() # reverses a list
 ```
 
-Reegular expressions
+#### Regular expressions
 ```R
 ?regex
 grep() #grep(pattern = <regex>, x=<string>) 
@@ -338,7 +338,49 @@ sub() # sub(pattern= <regex>, replacement = <str>, x=<str>)
 	# Returns a list with replaced values in first occurence only
 	# "cot","mouso","ont"
 gsub() # replaces every single occurence
+
+emails <- c("john.doe@ivyleague.edu", "education@world.gov", "dalai.lama@peace.org",
+            "invalid.edu", "quant@bigdatacollege.edu", "cookie.monster@sesame.tv")
+
+# Use grepl() to match for .edu addresses more robustly
+grepl(pattern="@.*\\.edu$",x=emails)
+
+# Use grep() to match for .edu addresses more robustly, save result to hits
+hits <-grep(pattern="\\.edu$",x=emails)
+
+# Subset emails using hits
+emails[hits]
 ```
+
+### Times and dates
+
+```R
+today <- Sys.Date()
+now <- Sys.time()
+my_date <- as.Date("1971-05-14", format="%Y-%m-%d")
+my_time <- as.POSIXct("1971-05-14 11:25:15")
+
+my_date + 1 # gives you the next day
+my_date2 - my_date1 # gives you the difference in days
+
+my_time2 + 1 # adds one second to the time "1971-05-14 11:25:16"
+
+unclass(my_date) # number of days since 1 Jan 1970
+
+
+#%Y: 4-digit year (1982)
+#%y: 2-digit year (82)
+#%m: 2-digit month (01)
+#%d: 2-digit day of the month (13)
+#%A: weekday (Wednesday)
+#%a: abbreviated weekday (Wed)
+#%B: month (January)
+#%b: abbreviated month (Jan)
+```
+Packages for dealing with time:
+lubridate
+zoo
+xts 
 
 
 
