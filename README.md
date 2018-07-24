@@ -367,7 +367,6 @@ my_time2 + 1 # adds one second to the time "1971-05-14 11:25:16"
 
 unclass(my_date) # number of days since 1 Jan 1970
 
-
 #%Y: 4-digit year (1982)
 #%y: 2-digit year (82)
 #%m: 2-digit month (01)
@@ -376,11 +375,31 @@ unclass(my_date) # number of days since 1 Jan 1970
 #%a: abbreviated weekday (Wed)
 #%B: month (January)
 #%b: abbreviated month (Jan)
+
+str1 <- "May 23, '96"
+str2 <- "2012-03-15"
+str3 <- "30/January/2006"
+
+# Convert the strings to dates: date1, date2, date3
+date1 <- as.Date(str1, format = "%b %d, '%y")
+date2 <- as.Date(str2, format="%Y-%m-%%d")
+date3 <- as.Date(str3, format="%d/%B/%Y")
+
+# Convert dates to character strings
+format(date1, "%A") # Thursday
+
+?strptime #alll the conversion symbols
+
 ```
 Packages for dealing with time:
-lubridate
-zoo
-xts 
+1. lubridate
+2. zoo
+3. xts 
+
+
+
+
+
 
 
 
