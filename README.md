@@ -61,6 +61,8 @@ airmiles # loads the values in the console
 	margin.table(UCBAdmission, 1) # view marginal frequencies
 	obj.property <- margin.table(UCBAdmission, 1) #stpres value in table
 	prop.table(obj.property) # shows proportions or percentages
+	colnames(df) # column names of our dataframe
+	View(trends.txt) # view your data as a table in R-Studio
 ```
 
 ### Basic data manipulation
@@ -84,13 +86,64 @@ airmiles # loads the values in the console
 	substr("Text goes here", start=4, stop=6) # Text, start, stop
 	strsplit(pioneers, split = ":") # splits text on the specified character
 	indentical(a,b) # returns TRUE or FALSE if the same
+	df_xl <- filter(df_xl, !is.na(Year)) # eliminate NA values using this DPLYR function
 ```
 
 ### Importing data
 ```R
 	trends.txt <- read.table("GoogleTrends.txt", header = TRUE, sep= "\t") # Read data from a text file and set the separator to tabs
 	View(trends.txt) # views a text file
-	trends.csv <- read.csv("GoogleTrends.csv", header = TRUE) # read data from a csv file
+```
+
+#### CSV data
+```R
+	# Read data from a website
+	df_csv <- read.csv("https://data.ct.gov/api/views/iyru-82zq/rows.csv?accessType=DOWNLOAD", stringsAsFactors=F)
+	# Read data from a local csv file
+	trends.csv <- read.csv("GoogleTrends.csv", header = TRUE)
+	
+	# Use a the readr library
+	install.packages("readr")
+	library(readr)
+	df_csv <- read_csv("data/Admissions_to_DMHAS_Addiction_Treatment_by_Town__Year__and_Month.csv")
+
+	#Export CSV
+	write_csv(df_csv, "data/transformed_data.csv", na="")
+```
+Here is a quite writeup of how to [batch import CSV files](https://journalismcourses.org/courses/RC0818/folder-of-files.pdf)
+
+#### Excel data
+```R
+	# Here we must use the readrxl package.
+	# You cannot hotlink to the excel file
+	install.packages("readxl")
+	library(readxl)
+	df_xls <- read_excel("data/Admissions.xls", sheet=1, skip=2) #skips the first two rows
+	view(df_xls)
+```
+
+#### Delimited files
+```R
+	install.packages("readr")
+	library(readr)
+	df1 <- read_delim("data/Employee_Payroll_Pipe.txt", delim="|")
+```
+
+#### JSON data
+```R
+	install.packages("jsonlite")
+	library(jsonlite)
+
+	json_url <-"http://sbgi.net/resources/assets/sbgi/MetaverseStationData.json"
+	stations <- fromJSON(json_url)
+```
+
+#### Copying and pasting data
+```R
+	install.packages("datapasta")
+	library(datapasta)
+	install.packages("tibble")
+	library(tibble)
 ```
 
 ### Vector commands
@@ -147,7 +200,7 @@ c(B) # deconstruct a matrix which combines all column vectors into one.
 ```
 
 ### Dataframe commands
-Dataframes are two-dimensional objects. Variables as columns and observations as rows. Different columns can be of different data type.
+Dataframes are two-dimensional objects. Variables as columns and observations as rows. Different columns can be of different data type. Think of them as spreadsheets.
 ```R
 df <- data.frame(a,b,c,d) # where a, b, c, d are vectors
 df[1,3] # first row, third column
@@ -165,7 +218,8 @@ order(dataset, na.last = TRUE, decreasing = FALSE, method = c("auto", "shell", "
 ```
 
 ### List commands
-A list in R allows you to gather a variety of objects under one name (that is, the name of the list) in an ordered way. These objects can be matrices, vectors, data frames, even other lists, etc. It is not even required that these objects are related to each other in any way.
+A list in R allows you to gather a variety of objects under one name (that is, the name of the list) in an ordered way. These objects can be matrices, vectors, data frames, even other lists, etc. It is not even required that these objects are related to each other in any way. Another basic structure in R is a list.
+Think of lists as how JSON files are structured.
 ```R
 my_list <- list(my_vector,my_matrix,my_df) # these three components can be vectors, matrices or data frames.
 my_list <- list(name1 = your_comp1, name2 = your_comp2) # you can give each list a name
