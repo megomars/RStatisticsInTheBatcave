@@ -5,7 +5,14 @@ output: html_notebook
 
 ## A review of R, the statistical programming language.
 
-Updated to include only the useful commands - 2 years into using the language.
+I created this R notebook to document all the useful R commands that I've learned over the past two years.
+
+#### Other dedicated R repos:
+
+* [R probability in the Batcave](https://github.com/megomars/RProbabilityinTheBatcave)
+* [Tidyverse in the Batcave](https://github.com/megomars/TidyverseInTheBatcave)
+* [GGPlot2 in the Batcave](https://github.com/megomars/GGPlot2IntheBatcave)
+* [R for Journalists](https://github.com/megomars/RJournalismInTheBatcave)
 
 ## Theory
 * R is a programming language based on S, R is the name of the language, R-Studio is the IDE
@@ -107,15 +114,22 @@ There are 5 types of data that we'll be dealing with:
   * Databases
   * Web
   * Statistical software
+  
+The useful packages are:
+  * readr
+  * data.table
 
 #### CSV data
 ```{R}
 	# Use baseR's utils package to read data from a website
 	df_csv <- read.csv("https://data.ct.gov/api/views/iyru-82zq/rows.csv?accessType=DOWNLOAD", stringsAsFactors=FALSE)
+
+  # What about countries that use commas as points? Well you can use read.csv2
+  read.csv2("googletrends.csv", header=TRUE, stringsAsFactors = FALSE)
 	# Read data from a local csv file
 	trends.csv <- read.csv("GoogleTrends.csv", header = TRUE)
 	
-	# Use a the readr library
+	# Use the readr library
 	install.packages("readr")
 	library(readr)
 	df_csv <- read_csv("data/Admissions_to_DMHAS_Addiction_Treatment_by_Town__Year__and_Month.csv")
@@ -144,7 +158,7 @@ Here is a quite writeup of how to [batch import CSV files](https://journalismcou
 	install.packages("readr")
 	library(readr)
 	df1 <- read_delim("data/Employee_Payroll_Pipe.txt", delim="|")
-#Lets read some different formats
+#Lets read some different formats with Base R
 	trends.txt <- read.table("GoogleTrends.txt", header = TRUE, sep= "\t", stringsAsFactors = FALSE) # Read data from a text file and set the separator to tabs
 	View(trends.txt) # views a text file
 #Add column names and classes
@@ -159,6 +173,7 @@ Here is a quite writeup of how to [batch import CSV files](https://journalismcou
 	json_url <-"http://sbgi.net/resources/assets/sbgi/MetaverseStationData.json"
 	stations <- fromJSON(json_url)
 ```
+
 #### Copying and pasting data
 ```{R}
 	install.packages("datapasta")
@@ -465,10 +480,9 @@ format(date1, "%A") # Thursday
 
 ```
 Packages for dealing with time:
-1. lubridate
-2. zoo
-3. xts 
-
+* lubridate
+* zoo
+* xts 
 
 
 ### Working with charts
