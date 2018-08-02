@@ -10,6 +10,7 @@ Updated to include only the useful commands - 1.5 years into using the language.
 * **Comments are written with a # (shift-command-c for multiple lines)**
 * **Run commands with - Command-Enter**
 
+---
 
 ## Basic R
 ```R
@@ -65,6 +66,8 @@ airmiles # loads the values in the console
 	View(trends.txt) # view your data as a table in R-Studio
 ```
 
+---
+
 ### Basic data manipulation
 ```R
 	data1 <- data2[,-4] # remove the fourth column
@@ -88,17 +91,21 @@ airmiles # loads the values in the console
 	indentical(a,b) # returns TRUE or FALSE if the same
 	df_xl <- filter(df_xl, !is.na(Year)) # eliminate NA values using this DPLYR function
 ```
+---
 
 ### Importing data
-```R
-	trends.txt <- read.table("GoogleTrends.txt", header = TRUE, sep= "\t") # Read data from a text file and set the separator to tabs
-	View(trends.txt) # views a text file
-```
+
+There are 5 types of data that we'll be dealing with:
+1. Flat files
+2. Excel
+3. Databases
+4. Web
+5. Statistical software
 
 #### CSV data
 ```R
-	# Read data from a website
-	df_csv <- read.csv("https://data.ct.gov/api/views/iyru-82zq/rows.csv?accessType=DOWNLOAD", stringsAsFactors=F)
+	# Use baseR's utils package to read data from a website
+	df_csv <- read.csv("https://data.ct.gov/api/views/iyru-82zq/rows.csv?accessType=DOWNLOAD", stringsAsFactors=FALSE)
 	# Read data from a local csv file
 	trends.csv <- read.csv("GoogleTrends.csv", header = TRUE)
 	
@@ -124,9 +131,18 @@ Here is a quite writeup of how to [batch import CSV files](https://journalismcou
 
 #### Delimited files
 ```R
+#using base R we can write:
+	read.table("states.csv", header=TRUE, sep = ",", stringsAsFactors=FALSE)
+	read.delim("states", stringsAsFactors = FALSE)
+#A better way to do this is to use the readr package
 	install.packages("readr")
 	library(readr)
 	df1 <- read_delim("data/Employee_Payroll_Pipe.txt", delim="|")
+#Lets read some different formats
+	trends.txt <- read.table("GoogleTrends.txt", header = TRUE, sep= "\t", stringsAsFactors = FALSE) # Read data from a text file and set the separator to tabs
+	View(trends.txt) # views a text file
+#Add column names and classes
+	read.delim("my_file.txt", colClasses = c("character","numeric","logical"), col.names = c("type", "calories", "sodium"))
 ```
 
 #### JSON data
@@ -137,7 +153,6 @@ Here is a quite writeup of how to [batch import CSV files](https://journalismcou
 	json_url <-"http://sbgi.net/resources/assets/sbgi/MetaverseStationData.json"
 	stations <- fromJSON(json_url)
 ```
-
 #### Copying and pasting data
 ```R
 	install.packages("datapasta")
@@ -145,6 +160,8 @@ Here is a quite writeup of how to [batch import CSV files](https://journalismcou
 	install.packages("tibble")
 	library(tibble)
 ```
+
+---
 
 ### Vector commands
 A vector is a one dimensional array: The elements in a vector all have the same data type. A vector is a sequence of data elements of the same basic type. Members in a vector are officially called components.
@@ -230,6 +247,8 @@ shining_list$reviews
 shining_list[[2]][1]] #select the first observation of the second variable
 newlist <- c(oldlist,year=1980) # add new variable with observation = 1980 to the list
 ```
+
+---
 
 ## INTERMEDIATE R
 
