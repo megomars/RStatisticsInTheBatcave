@@ -16,6 +16,7 @@ I created this R notebook to document all the useful R commands that I've learne
 
 ## Theory
 * R is a programming language based on S, R is the name of the language, R-Studio is the IDE
+* R is case-sensitive (unlike SQL) intepreted language (unlike C)
 * R has features for - data access, data cleaning, analysis and data reporting.
 * **Comments are written with a # (shift-command-c for multiple lines)**
 * **Run commands with - Command-Enter**
@@ -36,12 +37,14 @@ rm(x)
 rm(x,y)
 rm(list = ls()) # clears your workspace/memory
 ls() # view your workspace
+source("script.R") # run the entire saved script.R
 ```
 
 ## Working with packages
 * Packages by [domain](https://cran.r-project.org/web/views/) and [alphabetical](https://cran.r-project.org/web/packages/available_packages_by_name.html)
 ```{R}
 install.packages("ggplot2")
+update.packages() #updates all the installed packages
 search() #view all the installed functions
 library("ggplot2")
 require("ggplot2") # activate the package
@@ -145,8 +148,12 @@ Here is a quite writeup of how to [batch import CSV files](https://journalismcou
 	# You cannot hotlink to the excel file
 	install.packages("readxl")
 	library(readxl)
-	df_xls <- read_excel("data/Admissions.xls", sheet=1, skip=2) #skips the first two rows
+  # Read a specific sheet
+  read_excel("cities.xlsx", sheet="year_2000")
+  #skips the first two rows
+	df_xls <- read_excel("data/Admissions.xls", sheet=1, skip=2) 
 	view(df_xls)
+	
 ```
 
 #### Delimited files
@@ -163,6 +170,8 @@ Here is a quite writeup of how to [batch import CSV files](https://journalismcou
 	View(trends.txt) # views a text file
 #Add column names and classes
 	read.delim("my_file.txt", colClasses = c("character","numeric","logical"), col.names = c("type", "calories", "sodium"))
+#Selectively load in rows	
+potatoes_fragment <- read_tsv("potatoes.txt", skip = 6, n_max = 5, col_names = properties)
 ```
 
 #### JSON data
@@ -195,6 +204,7 @@ vec <- c(vec,3,2,3) # add values to the end of a vector
 a <- c(1,2,3)      b <- c(4,5,6)   #  a+b    a-b    a*b    a/b     # 5 7 9
 names(vec) <- c("A","B","C") # give names to the values
 vec["NameOfElement"] # selects column with name "NameOfElement"
+vec$`vector name with spaces` # selects a column with spaces using the backtick
 unname(vec) # return no names
 conditional_select <- vec[1:5]>0 # store those values as booleans where the first five values are >0
 selection_vector <- poker_vector > 0 #store those values as booleans where the entire vectors are >0
@@ -209,6 +219,8 @@ Factors are a statistical data type used to store categorical/nominal variables
 
 ```{R}
 factor_create <-factor(gender_vector)
+sample_df$race <- factor(sample_df$race) # set the race column as a factor
+levels(sample_df$race) # see the levels of our race column
 factor(temp, order=TRUE, levels=c("L","M","H")) # ordinal data
 levels(factor_survey_vector) <- c("Female","Male") # overrides the default levels and values
 summary(temp)
@@ -347,6 +359,7 @@ for (i in 1:nrow(ttt)) {
 ```{R}
 args(sd) # arguments of a function
 na.rm = TRUE # remove all NA values
+max(j, na.rm=T) # get the max values but exclude the na's
 func <- function(x){
 	#do something
 	return(x*3) # you can either explicitly return a value otherwise the last statement is returned
