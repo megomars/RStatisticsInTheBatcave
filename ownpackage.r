@@ -42,3 +42,6 @@ supercharger <- function(){
 turbocharger <- function(){
   
 }
+
+
+usethis::create_package("/Users/haddad/Google Drive/2018Code/R/RStatisticsInTheBatcave/morepower")
