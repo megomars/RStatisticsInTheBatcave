@@ -9,6 +9,15 @@ intake <- function(brand){
   }
 }
 
+#' Title
+#'
+#' @param brand
+#' @param diameter
+#'
+#' @return
+#' @export
+#'
+#' @examples
 headers <- function(brand, diameter){
   if (brand=="dc-sports" | brand=="DC-Sports" | brand=="DC Sports" & diameter==2.5){
     return (15)
