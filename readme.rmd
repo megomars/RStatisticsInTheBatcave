@@ -59,6 +59,8 @@ airmiles # loads the values in the console
 ```
 ### Getting to know your data
 ```{R}
+  nrow(airmiles) # number of rows - same as first value in dim(airmiles)
+  ncol(airmiles) # number of columns - same as length(airmiles)
 	str(airmiles) # shows you the structure of your data
 	dim(airmiles) # dimensions of your data, rows, columns
 	summary(airmiles) # summary of your data
