@@ -61,6 +61,7 @@ airmiles # loads the values in the console
 ```{R}
   nrow(airmiles) # number of rows - same as first value in dim(airmiles)
   ncol(airmiles) # number of columns - same as length(airmiles)
+  glipse(airmiles) # a glimpse into the data - LOOKS LIKE IT's A DPLYR FILTER
 	str(airmiles) # shows you the structure of your data
 	dim(airmiles) # dimensions of your data, rows, columns
 	summary(airmiles) # summary of your data
@@ -81,6 +82,7 @@ airmiles # loads the values in the console
 	obj.property <- margin.table(UCBAdmission, 1) #stpres value in table
 	prop.table(obj.property) # shows proportions or percentages
 	colnames(df) # column names of our dataframe
+	unique(airmiles$value) # how many uniques of a particular kind
 	View(trends.txt) # view your data as a table in R-Studio
 ```
 
