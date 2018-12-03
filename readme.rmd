@@ -38,6 +38,9 @@ rm(x,y)
 rm(list = ls()) # clears your workspace/memory
 ls() # view your workspace
 source("script.R") # run the entire saved script.R
+?mean #Get help about a specific function
+help.search("weighted mean") #Help about a specific phrase
+help(package="dplyr") #Help about a specific package
 ```
 
 ## Working with packages
@@ -50,11 +53,13 @@ library("ggplot2")
 require("ggplot2") # activate the package
 result <- require("data.table") # returns FALSE if package does not exist, good for attaching packages dynamically
 ?ggplot2 # documentation for each package (also includes vignettes)
+dplyr::select #Use the select function from dplyr (just incase there is more than one package using select)
 ```
 
 ## Working with data
 ```{R}
 ?datasets # show the built-in data(airmiles) - load that data
+data(iris) # load the iris dataset
 airmiles # loads the values in the console
 ```
 ### Getting to know your data
@@ -216,6 +221,10 @@ sum(vec) # add up all values in vector
 vec1 >= vec2 # returns TRUE or FALSE
 selection_vector <- poker_vector > 0
 poker_winning_days <- poker_vector[selection_vector]
+
+x[x == 10] #Elements which are equal to 10.
+x[x < 0] #All elements less than zero.
+x[x %in% c(1, 2, 5)] #Elements in the set 1, 2, 5.
 ```
 
 ### Factor commands
@@ -421,7 +430,9 @@ lapply(list(1,2,3), function(x) { 3 * x })
 ```{R}
 sort(c(4,5,6,3,2,1)) # gives us 1,2,3,4,5,6 - sort(x, decreasing = FALSE)
 append() # adds to a list
-rev() # reverses a list
+rev(x) # reverses a list
+unique(x) # see unique values
+table(x) # See counts of values
 ```
 
 #### Regular expressions
