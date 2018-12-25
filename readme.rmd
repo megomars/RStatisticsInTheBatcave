@@ -38,6 +38,7 @@ rm(x,y)
 rm(list = ls()) # clears your workspace/memory
 ls() # view your workspace
 source("script.R") # run the entire saved script.R
+(x<- c(1,3,4)) # assigns x and views x at the same time - Mind blown (discovered 24 Dec 2018)
 ?mean #Get help about a specific function
 help.search("weighted mean") #Help about a specific phrase
 help(package="dplyr") #Help about a specific package
